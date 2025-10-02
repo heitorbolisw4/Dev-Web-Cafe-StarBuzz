@@ -24,6 +24,7 @@ const produtos =  {
         img: './img/cafe4.jpg',
     }        
 };
+let produtoId;
 function openPopUp(produtoId){
     const produto = [produtos] // pega a lista de produtos definidas acima
 
@@ -146,4 +147,107 @@ function openPopUp(produtoId){
     ">Confirmar Pedido</button>            
     
     `;
+    // adicionado o popup ao overlay
+  overlay.appendChild(popup);
+  document.body.appendChild(overlay)
+
+  // variavel para controlar a quantidade
+  let quantidade = 1;
+
+  // event listeners
+  document.getElementById('fechar-popup').onClick = fecharPopup;
+  overlay.onclick = (e) => {
+    if (e.target === overlay) fecharPopup();
+  };
+
+  document.getElementById('aumentar').onclick = () =>{
+    quantidade++;
+    document.getElementById('quantidade').textContent = quantidade;
+  };
+
+  document.getElementById('diminuir').onclick = () =>{
+    quantidade--;
+    document.getElementById('quantidade').textContent = quantidade;
+  };
+
+  document.getElementById('confirmar-pedido').onclick = () => {
+    alert(`Pedido Confirmado\n ${quantidade}x ${produtos.nome}\n Total: R$ 00, 00`)
+    fecharPopup();
+  };
+    
+  // hover effect no botão confirmar
+  const btnConfirmar = document.getElementById('confirmar-pedido');
+  btnConfirmar.onmouseover = () => btnConfirmar.style.background = '#4a3329';
+  btnConfirmar.onmouseout = () => btnConfirmar.style.background = '#5C4033';
+};
+
+
+// função para fechar o popup
+function fecharPopup(){
+  const overlay = document.getElementById('popup-overlay');
+  if(overlay){
+    overlay.style.animation = 'fadeOut 0.3s ease';
+    setTimeout(() => overlay.remove(), 300)
+  }
 }
+
+// adiciona as animações css
+const style = document.createElement('style');
+style.TextContent = `
+  @keyframes fadeIn{
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}    
+  
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }    
+
+`;
+
+// Event Listeners para os botões "Fazer pedido"
+
+document.addEventListener('DOMContentLoaded', () => {
+  const botoes = document.querySelectorAll('button');
+  botoes.forEach(botao =>{
+    if(botao.textContent.includes('Fazer Pedido')){
+      botao.onclick = function(){
+        
+        
+        
+        
+        const titulo = document.getElementsByClassName('title');
+
+        
+        
+        
+        let produtoId;
+        if(titulo.textContent === "Mistura da Casa"){
+          produtoId = 'mistura-casa';
+          
+        }else if(titulo.textContent === "Café Arabico com Leite"){
+          produtoId = 'cafe-arabico';
+          
+          
+        }else if(titulo.textContent === "Capuccino"){
+          produtoId = 'capuccino';
+          
+        }else if(titulo.textContent === "Chá Chai"){
+          produtoId = 'cha-chai';
+          
+
+        }
+        openPopUp(produtoId);
+
+        
+      };
+    }
+  });
+});
