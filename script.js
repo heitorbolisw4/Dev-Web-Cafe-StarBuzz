@@ -95,12 +95,12 @@ function openPopUp(produtoId){
       border-radius: 10px;
       margin-bottom: 25px;
     ">
-      <p style="
+      <p id="valor" style="
         font-size: 24px;
         color: #5C4033;
         font-weight: bold;
         margin: 0;
-      ">${produto.preco}</p>
+      ">${produto.preco} R$</p>
     </div>
 
     <div style="
@@ -160,45 +160,61 @@ function openPopUp(produtoId){
   let quantidade = 1;
 
   // event listeners
-  document.getElementById('fechar-popup').onClick = fecharPopup;
+  document.getElementById('fechar-popup').onclick = fecharPopup;
   overlay.onclick = (e) => {
     if (e.target === overlay) fecharPopup();
   };
 
   document.getElementById('aumentar').onclick = () =>{
+    let valor = document.getElementById('valor')
     quantidade++;
+    if(quantidade >= 1){
+      diminuir.disabled = false
+    }else if(quantidade == 1){
+      diminuir.disabled = true
+    }
+    valor = quantidade * produto.preco
     document.getElementById('quantidade').textContent = quantidade;
+    document.getElementById('valor').textContent = `${valor} R$`
   };
 
   // ajustar valores dos produtos
   document.getElementById('diminuir').onclick = () =>{
+    let valor = document.getElementById('valor')
     quantidade--;
+    if(quantidade == 1){
+      diminuir.disabled = true
+    }else if (quantidade > 1){
+      diminuir.disabled = false
+
+    }
+    valor = quantidade * produto.preco
     document.getElementById('quantidade').textContent = quantidade;
+    document.getElementById('valor').textContent = `${valor} R$`
   };
 
   document.getElementById('confirmar-pedido').onclick = () => {
-    alert(`Pedido Confirmado\n ${quantidade}x ${produto.nome}\n Total: R$ 00, 00`)
+    alert(`Pedido Confirmado\n ${quantidade}x ${produto.nome}\n Total: ${valor.textContent}`)
     fecharPopup();
   };
-  document.getElementById('valor').onclick = {
 
-  }
-    
   // hover effect no botão confirmar
   const btnConfirmar = document.getElementById('confirmar-pedido');
   btnConfirmar.onmouseover = () => btnConfirmar.style.background = '#4a3329';
   btnConfirmar.onmouseout = () => btnConfirmar.style.background = '#5C4033';
+
+  // função para fechar o popup
+  //const closePopUp = document.getElementById('fechar-popup')
+  function fecharPopup(){
+    const overlay = document.getElementById('popup-overlay');
+    if(overlay){
+      overlay.style.animation = 'fadeOut 1s ease';
+      setTimeout(() => overlay.remove(), 300)
+    }
+    //closePopUp.addEventListener('click', fecharPopup())
+  }
 };
 
-
-// função para fechar o popup
-function fecharPopup(){
-  const overlay = document.getElementById('popup-overlay');
-  if(overlay){
-    overlay.style.animation = 'fadeOut 0.3s ease';
-    setTimeout(() => overlay.remove(), 300)
-  }
-}
 
 // adiciona as animações css
 const style = document.createElement('style');
@@ -210,13 +226,14 @@ style.TextContent = `
 
   @keyframes fadeOut {
     from {opacity: 1;}
-    to {opacity: 0;}    
+    to {opacity: 0;}
+    transform: scale(1, 0.0);
   
   }
 
   @keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from { transform: translateY(50px); opacity: 1; }
+    to { transform: translateY(0); opacity: 10; }
   }    
 
 `;

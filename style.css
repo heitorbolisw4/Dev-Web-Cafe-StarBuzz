@@ -28,10 +28,12 @@ header h1{
     font-family: 'Saira', sans-serif;
     color: #dadada;
     text-align: center;
+    font-size: 3em;
 }
 .doIt{
     width: 70%;
     padding: 7px;
+    font-size: 16px;
     color: var(--color-5);
     border-radius: 3px;
     border: 3px solid var(--color-2);
@@ -47,8 +49,9 @@ header h1{
 }
 
 .cardapio{
-    background-color: #dadadada;
+    background-color: var(--color-5);
     color: #503219;
+    border: 1px solid #dadada;
     padding: 35px 40px 35px 40px;
     gap: 20px;
     width: 95%;
@@ -67,6 +70,7 @@ header h1{
     align-items: center;
     padding: 20px;
     gap: 15px;
+    background-color: var(--color-5);
     text-align: center;
     border: 2px solid #503219;
     margin-bottom: 10px;
@@ -85,7 +89,7 @@ header h1{
     border-radius: 5px;
 }
 .item h2{
-    font-size: 25px;
+    font-size: 30px;
 }
 .item p{
     font-weight: lighter;
