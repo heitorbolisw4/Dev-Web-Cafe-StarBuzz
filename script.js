@@ -1,33 +1,38 @@
 const produtos =  {
     'mistura-casa':{
+        id: 1,
         nome: 'Mistura da Casa',
         descricao: 'Uma mistura delicada de cafés do Mexico, Bolivia e Guatemala',
-        preco: 'R$ 12,00',
+        preco: 12.00,
         img: './img/cafe1.jpg',
     },
     'cafe-arabico':{
+        id: 2,
         nome: 'Café Arábico com Leite',
         descricao: 'Expresso, leite fervido e xarope de Chocolate',
-        preco: 'R$ 13,50',
+        preco: 13.50,
         img: './img/cafe2.jpg',
     },
     'capuccino':{
+        id: 3,
         nome: 'Capuccino',
         descricao: 'Uma mistura de expresso, leite fervido e espuma',
-        preco: 'R$ 17,98',
+        preco: 17.98,
         img: './img/cafe3.jpg',
     },
     'cha-chai':{
+        id: 4,      
         nome: 'Chá Chai',
         descricao: 'Uma Bebida Condimentada com chá preto, especiais, leite e mel',
-        preco: 'R$ 14,99',
+        preco: 14.99,
         img: './img/cafe4.jpg',
     }        
 };
-let produtoId;
-function openPopUp(produtoId){
-    const produto = [produtos] // pega a lista de produtos definidas acima
 
+function openPopUp(produtoId){
+    console.log('ProdutoId recebido:', produtoId);
+    const produto = produtoId; // pega a lista de produtos definidas acima
+    console.log('Produto encontrado:', produto);
     //overlay para efeito de fundo
 
     const overlay = document.createElement('div');
@@ -165,15 +170,19 @@ function openPopUp(produtoId){
     document.getElementById('quantidade').textContent = quantidade;
   };
 
+  // ajustar valores dos produtos
   document.getElementById('diminuir').onclick = () =>{
     quantidade--;
     document.getElementById('quantidade').textContent = quantidade;
   };
 
   document.getElementById('confirmar-pedido').onclick = () => {
-    alert(`Pedido Confirmado\n ${quantidade}x ${produtos.nome}\n Total: R$ 00, 00`)
+    alert(`Pedido Confirmado\n ${quantidade}x ${produto.nome}\n Total: R$ 00, 00`)
     fecharPopup();
   };
+  document.getElementById('valor').onclick = {
+
+  }
     
   // hover effect no botão confirmar
   const btnConfirmar = document.getElementById('confirmar-pedido');
@@ -211,43 +220,30 @@ style.TextContent = `
   }    
 
 `;
+document.head.appendChild(style);
 
 // Event Listeners para os botões "Fazer pedido"
 
-document.addEventListener('DOMContentLoaded', () => {
-  const botoes = document.querySelectorAll('button');
-  botoes.forEach(botao =>{
-    if(botao.textContent.includes('Fazer Pedido')){
-      botao.onclick = function(){
-        
-        
-        
-        
-        const titulo = document.getElementsByClassName('title');
+const selectOption = document.querySelectorAll('.doIt');
 
-        
-        
-        
-        let produtoId;
-        if(titulo.textContent === "Mistura da Casa"){
-          produtoId = 'mistura-casa';
-          
-        }else if(titulo.textContent === "Café Arabico com Leite"){
-          produtoId = 'cafe-arabico';
-          
-          
-        }else if(titulo.textContent === "Capuccino"){
-          produtoId = 'capuccino';
-          
-        }else if(titulo.textContent === "Chá Chai"){
-          produtoId = 'cha-chai';
-          
-
-        }
-        openPopUp(produtoId);
-
-        
-      };
-    }
+selectOption.forEach(btn =>{
+  btn.addEventListener("click", () =>{
+    let produtoId = btn.dataset.produto
+  if(produtoId === "mistura-casa"){
+    const id = produtos["mistura-casa"]
+    produtoId = id;
+  }else if(produtoId === "cafe-arabico"){
+    const id = produtos["cafe-arabico"]
+    produtoId = id;
+  }else if(produtoId === "capuccino"){
+    const id = produtos["capuccino"]
+    produtoId = id;  }else if (produtoId === "cha-chai"){
+    const id = produtos["cha-chai"]
+    produtoId = id;
+  }
+  openPopUp(produtoId);
   });
 });
+
+
+
