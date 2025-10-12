@@ -2,8 +2,8 @@
 
 > Um projeto front-end que transforma a paixão por café em uma landing page interativa e elegante, desenvolvida para praticar e demonstrar habilidades em HTML, CSS e JavaScript.
 
-![Prévia do Projeto]([COLE AQUI O CAMINHO PARA UMA IMAGEM OU GIF DO SEU PROJETO])
-*Substitua a linha acima por uma captura de tela do seu site.*
+![Prévia do Projeto](./img/readmeimg.png)
+
 
 ---
 
