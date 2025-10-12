@@ -73,7 +73,7 @@ Pronto! O projeto estará rodando localmente em sua máquina.
 
 Você pode visualizar o projeto em produção através do link abaixo. Ele foi hospedado utilizando o GitHub Pages.
 
-**[https://[SEU-USUARIO].github.io/[NOME-DO-REPOSITORIO]/](https://[SEU-USUARIO].github.io/[NOME-DO-REPOSITORIO]/)**
+**[https://heitorbolisw4.github.io/Dev-Web-Cafe-StarBuzz/](https://heitorbolisw4.github.io/Dev-Web-Cafe-StarBuzz/)**
 
 ---
 
