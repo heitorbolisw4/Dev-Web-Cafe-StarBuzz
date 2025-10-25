@@ -128,3 +128,76 @@ footer{
     padding: 20px;
     margin-top: 20px;
 }
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: #f4f0ed;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .cardapio {
+        width: 100%;
+        margin: 0;
+        padding: 24px 16px;
+        border-radius: 0;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding: 0 16px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
+    .cardapio::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .cardapio::-webkit-scrollbar-thumb {
+        background-color: rgba(80, 50, 25, 0.3);
+        border-radius: 999px;
+    }
+
+    .item {
+        min-width: 80%;
+        flex: 0 0 80%;
+        width: auto;
+        scroll-snap-align: center;
+        box-shadow: 0 6px 18px rgba(24, 59, 58, 0.18);
+    }
+
+    .doIt {
+        width: 100%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .cardapio {
+        overflow: visible;
+        scroll-snap-type: none;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .item {
+        flex: 1 1 220px;
+        max-width: 360px;
+        width: auto;
+        margin: 0;
+        box-shadow: none;
+    }
+}
