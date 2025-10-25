@@ -2,8 +2,8 @@
 
 > Um projeto front-end que transforma a paixão por café em uma landing page interativa e elegante, desenvolvida para praticar e demonstrar habilidades em HTML, CSS e JavaScript.
 
-![Prévia do Projeto]([COLE AQUI O CAMINHO PARA UMA IMAGEM OU GIF DO SEU PROJETO])
-*Substitua a linha acima por uma captura de tela do seu site.*
+![Prévia do Projeto](./img/readmeimg.png)
+
 
 ---
 
@@ -73,7 +73,7 @@ Pronto! O projeto estará rodando localmente em sua máquina.
 
 Você pode visualizar o projeto em produção através do link abaixo. Ele foi hospedado utilizando o GitHub Pages.
 
-**[https://[SEU-USUARIO].github.io/[NOME-DO-REPOSITORIO]/](https://[SEU-USUARIO].github.io/[NOME-DO-REPOSITORIO]/)**
+**[https://heitorbolisw4.github.io/Dev-Web-Cafe-StarBuzz/](https://heitorbolisw4.github.io/Dev-Web-Cafe-StarBuzz/)**
 
 ---
 
