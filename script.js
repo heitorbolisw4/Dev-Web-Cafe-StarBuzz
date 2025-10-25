@@ -45,10 +45,10 @@ function openPopUp(produtoId){
         height: 100%;
         background-color: rgba(0, 0, 0, 0.7);
         display: flex;
-        justfy-content: center;
-        align-itens: center;
+        justify-content: center;
+        align-items: center;
         z-index: 1000;
-        animation: fadeIn 0.3s ease;    
+        animation: fadeIn 0.3s ease;
     `;
     const popup = document.createElement('div');
     popup.style.cssText = `
@@ -160,41 +160,51 @@ function openPopUp(produtoId){
   let quantidade = 1;
 
   // event listeners
+  const diminuirBtn = document.getElementById('diminuir');
+  const aumentarBtn = document.getElementById('aumentar');
+  const quantidadeEl = document.getElementById('quantidade');
+  const valorEl = document.getElementById('valor');
+
+  diminuirBtn.disabled = true;
+  valorEl.textContent = `${produto.preco.toFixed(2)} R$`;
+
+
+
   document.getElementById('fechar-popup').onclick = fecharPopup;
   overlay.onclick = (e) => {
     if (e.target === overlay) fecharPopup();
   };
 
-  document.getElementById('aumentar').onclick = () =>{
-    let valor = document.getElementById('valor')
+
+  aumentarBtn.onclick = () =>{
     quantidade++;
-    if(quantidade >= 1){
-      diminuir.disabled = false
-    }else if(quantidade == 1){
-      diminuir.disabled = true
-    }
-    valor = quantidade * produto.preco
-    document.getElementById('quantidade').textContent = quantidade;
-    document.getElementById('valor').textContent = `${valor} R$`
-  };
+    diminuirBtn.disabled = quantidade <= 1;
+
+    const valor = quantidade * produto.preco;
+    quantidadeEl.textContent = quantidade;
+    valorEl.textContent = `${valor.toFixed(2)} R$`
+
+  }
 
   // ajustar valores dos produtos
-  document.getElementById('diminuir').onclick = () =>{
-    let valor = document.getElementById('valor')
-    quantidade--;
-    if(quantidade == 1){
-      diminuir.disabled = true
-    }else if (quantidade > 1){
-      diminuir.disabled = false
 
+  diminuirBtn.onclick = () =>{
+    if(quantidade <= 1){
+      quantidade = 1
+      diminuirBtn.disabled = true;
+      return
     }
-    valor = quantidade * produto.preco
-    document.getElementById('quantidade').textContent = quantidade;
-    document.getElementById('valor').textContent = `${valor} R$`
-  };
+    quantidade--;
+    diminuirBtn.disabled <= 1;
+
+    const valor = quantidade * produto.preco;
+    quantidadeEl.textContent = quantidade;
+    valorEl.textContent = `${valor.toFixed(2)} R$`
+
+  }
 
   document.getElementById('confirmar-pedido').onclick = () => {
-    alert(`Pedido Confirmado\n ${quantidade}x ${produto.nome}\n Total: ${valor.textContent}`)
+    alert(`Pedido Confirmado\n ${quantidade}x ${produto.nome}\n Total: ${valorEl.textContent}`)
     fecharPopup();
   };
 
@@ -205,20 +215,20 @@ function openPopUp(produtoId){
 
   // função para fechar o popup
   //const closePopUp = document.getElementById('fechar-popup')
-  function fecharPopup(){
-    const overlay = document.getElementById('popup-overlay');
-    if(overlay){
-      overlay.style.animation = 'fadeOut 1s ease';
-      setTimeout(() => overlay.remove(), 300)
-    }
-    //closePopUp.addEventListener('click', fecharPopup())
-  }
 };
+function fecharPopup(){
+  const overlay = document.getElementById('popup-overlay');
+  if(overlay){
+    overlay.style.animation = 'fadeOut 1s ease';
+    setTimeout(() => overlay.remove(), 300)
+  }
+  //closePopUp.addEventListener('click', fecharPopup())
+}
 
 
 // adiciona as animações css
 const style = document.createElement('style');
-style.TextContent = `
+style.textContent = `
   @keyframes fadeIn{
     from {opacity: 0;}
     to {opacity: 1;}
