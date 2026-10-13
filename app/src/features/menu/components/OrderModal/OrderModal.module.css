@@ -1,0 +1,67 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(90%, 500px);
+  padding: var(--space-8);
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+  animation: slide-up var(--duration-base) var(--ease);
+}
+
+.dialog::backdrop {
+  background-color: var(--color-overlay);
+  animation: fade-in var(--duration-base) var(--ease);
+}
+
+.close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.title {
+  margin-bottom: var(--space-3);
+  font-size: 1.75rem;
+}
+
+.description {
+  margin-bottom: var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.total {
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-weight: 700;
+}
+
+.count {
+  min-width: 2ch;
+  text-align: center;
+  font-size: var(--text-lg);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(40px); opacity: 0; }
+}

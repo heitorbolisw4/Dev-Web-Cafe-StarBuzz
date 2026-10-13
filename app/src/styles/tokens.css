@@ -1,0 +1,60 @@
+/*
+ * Design tokens — fonte única de verdade do visual.
+ * Componentes NUNCA usam cor/tamanho cru: sempre var(--token).
+ * Paleta herdada do protótipo (FrontEnd/style.css).
+ */
+:root {
+  /* Paleta base (primitivos) */
+  --brown-900: #3a2412;
+  --brown-700: #503219; /* marca */
+  --brown-500: #7a5435;
+  --cream-100: #f4f0ed;
+  --gray-300: #dadada;
+  --teal-900: #183b3a;
+  --teal-700: #466362;
+  --teal-500: #2b8e8b;
+
+  /* Semânticos (componentes usam ESTES) */
+  --color-bg: var(--gray-300);
+  --color-surface: var(--cream-100);
+  --color-primary: var(--brown-700);
+  --color-primary-hover: var(--brown-500);
+  --color-on-primary: var(--cream-100);
+  --color-text: var(--brown-700);
+  --color-text-muted: #6b5a4c;
+  --color-accent: var(--teal-500);
+  --color-overlay: rgb(0 0 0 / 0.65);
+
+  /* Tipografia */
+  --font-display: 'Saira', sans-serif;
+  --font-body: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-display: clamp(2.25rem, 6vw, 3.5rem);
+
+  /* Espaçamento (escala 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  /* Forma e profundidade */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --shadow-sm: 0 4px 12px rgb(80 50 25 / 0.15);
+  --shadow-lg: 0 10px 40px rgb(0 0 0 / 0.3);
+
+  /* Movimento */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Layout */
+  --container-max: 1200px;
+}

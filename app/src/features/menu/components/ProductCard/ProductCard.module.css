@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.description {
+  flex: 1;
+  color: var(--color-text-muted);
+}
+
+.price {
+  font-weight: 700;
+  font-size: var(--text-lg);
+}
